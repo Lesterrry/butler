@@ -1,0 +1,9 @@
+#!/usr/bin/env ruby
+# 
+# COPYRIGHT LESTER COVEY,
+#
+# 2022
+
+require_relative '../lib/butler'
+
+Butler.main
