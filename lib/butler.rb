@@ -30,6 +30,10 @@ module Butler
 		$router.bury_token(TOKEN_FILE_LOCATION)
 	end
 
+	def self.report(message)
+		system("#{SHELL_COMMAND} \"#{message}\"")
+	end
+
 	def self.main
 		$verbose = ARGV.include?('-V')
 		$router = Miwifi::Router.new(ROUTER_IP, ROUTER_PASSWORD, ROUTER_USERNAME)
@@ -85,7 +89,7 @@ module Butler
 			if $verbose
 				puts s
 			else
-				Internal.report s
+				report s
 			end
 			file = File.new(CACHE_FILE_LOCATION, 'w')
 			file.puts(Marshal.dump(people))
